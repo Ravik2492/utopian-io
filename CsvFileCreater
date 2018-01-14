@@ -1,0 +1,24 @@
+package beans;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
+import models.LogFileModel;
+
+public class CsvFileCreater {
+	
+	public static void main(String args[]) throws IOException
+	{
+		java.util.Date savedate = new java.util.Date();
+		String timestampdate = String.valueOf(new java.sql.Date(savedate.getTime()));
+		List<LogFileModel> list = new ArrayList<LogFileModel>();
+		list.add(new LogFileModel(1,1l,timestampdate,"first message"));
+		list.add(new LogFileModel(2,2l,timestampdate,"second message"));
+		list.add(new LogFileModel(3,3l,timestampdate,"third message"));
+		String filename = "mycsvlogfile";
+		String filepath = "F:/";
+		new LogFileCreationUtils().createLogFile(list, filepath, filename);
+	}
+
+}
